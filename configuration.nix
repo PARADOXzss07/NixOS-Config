@@ -8,15 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-6e4f7381-b66c-487d-a950-c34b1e053615".device = "/dev/disk/by-uuid/6e4f7381-b66c-487d-a950-c34b1e053615";
-  networking.hostName = "NixOS"; # Define your hostname.
+  boot.initrd.luks.devices."luks-2af3cfbe-988c-49ff-85bd-c06472a323ad".device = "/dev/disk/by-uuid/2af3cfbe-988c-49ff-85bd-c06472a323ad";
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   
   # Flakes
@@ -51,9 +50,9 @@
   
   # Enable the Hyprland WM (BROKEN)
   # programs.hyprland = {
-  # enable = true; 
-  # xwayland.enable = true;
-  #};
+   #enable = true; 
+ #  xwayland.enable = true;
+#  };
 
   # Hint Electon apps to use wayland
   # environment.sessionVariables = {
@@ -113,6 +112,11 @@
     ];
   };
 
+# Flatpak for Cura Slicer
+
+ services.flatpak.enable = true;
+
+
 # -----------------------------------------------------------
 #                           Install steam
 # -----------------------------------------------------------
@@ -121,7 +125,7 @@
 # -----------------------------------------------------------
 #			    Install firefox.
 # -----------------------------------------------------------
-  programs.firefox.enable = true;
+		  programs.firefox.enable = true;
 
 # -----------------------------------------------------------
 #                        Allow unfree packages
@@ -144,14 +148,19 @@
     	spotify
     	kitty
     	neovim
-    	pavucontrol
-    	pipewire
     	fish
     	prismlauncher
     	krita
     	openjdk8
     	openjdk17
 	gparted
+	btrfs-progs
+	gnome-icon-theme
+	catppuccin
+	discord
+	lutris
+	powershell
+	wine
  	 ];
  
   # Some programs need SUID wrappers, can be configured further or are
